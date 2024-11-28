@@ -12,8 +12,8 @@
 namespace Mandango\Mondator\Tests;
 
 use Mandango\Mondator\Mondator;
-use Mandango\Mondator\Container;
 use Mandango\Mondator\Extension;
+use PHPUnit\Framework\TestCase;
 
 class ExtensionTesting extends Extension
 {
@@ -35,7 +35,7 @@ class ExtensionTesting extends Extension
     }
 }
 
-class ExtensionTest extends \PHPUnit_Framework_TestCase
+class ExtensionTest extends TestCase
 {
     public function testConstructorOptions()
     {
@@ -56,19 +56,15 @@ class ExtensionTest extends \PHPUnit_Framework_TestCase
         ), $extension->getOptions());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testConstructorOptionNotExists()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new ExtensionTesting(array('foobar' => 'barfoo'));
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testConstructorNotSomeRequiredOption()
     {
+        $this->expectException(\RuntimeException::class);
         new ExtensionTesting(array('foo' => 'bar'));
     }
 
@@ -88,11 +84,9 @@ class ExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('default_value', $extension->getOption('optional'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetOptionNotExists()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $extension = new ExtensionTesting(array('required' => 'value'));
         $extension->setOption('foobar', 'barfoo');
     }
@@ -116,11 +110,9 @@ class ExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($extension->getOption('bar'));
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testGetOptionNotExists()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $extension = new ExtensionTesting(array('required' => 'value'));
         $extension->getOption('foobar');
     }

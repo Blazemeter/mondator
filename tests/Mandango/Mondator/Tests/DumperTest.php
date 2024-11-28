@@ -13,8 +13,9 @@ namespace Mandango\Mondator\Tests;
 
 use Mandango\Mondator\Definition\Definition;
 use Mandango\Mondator\Dumper;
+use PHPUnit\Framework\TestCase;
 
-class DumperTest extends \PHPUnit_Framework_TestCase
+class DumperTest extends TestCase
 {
     public function testConstructor()
     {
