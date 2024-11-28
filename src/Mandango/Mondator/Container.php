@@ -49,8 +49,7 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Set a definition.
      *
-     * @param string                       $name       The definition name.
-     * @param Mandango\Mondator\Definition $definition The definition.
+     * @param string $name The definition name.
      *
      * @api
      */
@@ -79,7 +78,7 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
      *
      * @param string $name The definition name.
      *
-     * @return Mandango\Mondator\Definition The definition.
+     * @return Definition The definition.
      *
      * @throws \InvalidArgumentException If the definition does not exists.
      *
@@ -97,7 +96,7 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Returns the definitions.
      *
-     * @return arary The definitions.
+     * @return array The definitions.
      *
      * @api
      */
@@ -137,24 +136,24 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
     /*
      * \ArrayAccess interface.
      */
-    public function offsetExists($name): bool
+    public function offsetExists(mixed $offset): bool
     {
-        return $this->hasDefinition($name);
+        return $this->hasDefinition($offset);
     }
 
-    public function offsetSet($name, $definition): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
-        $this->setDefinition($name, $definition);
+        $this->setDefinition($offset, $value);
     }
 
-    public function offsetGet($name): mixed
+    public function offsetGet(mixed $offset): mixed
     {
-        return $this->getDefinition($name);
+        return $this->getDefinition($offset);
     }
 
-    public function offsetUnset($name): void
+    public function offsetUnset(mixed $offset): void
     {
-        $this->removeDefinition($name);
+        $this->removeDefinition($offset);
     }
 
     /**

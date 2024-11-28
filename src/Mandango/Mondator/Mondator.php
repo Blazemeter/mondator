@@ -22,7 +22,6 @@ class Mondator
 {
     private $configClasses;
     private $extensions;
-    private $outputs;
 
     /**
      * Constructor.
@@ -31,9 +30,8 @@ class Mondator
      */
     public function __construct()
     {
-        $this->configClasses = array();
-        $this->extensions = array();
-        $this->options = array();
+        $this->configClasses = [];
+        $this->extensions = [];
     }
 
     /**
