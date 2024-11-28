@@ -12,8 +12,9 @@
 namespace Mandango\Mondator\Tests\Definition;
 
 use Mandango\Mondator\Definition\Method;
+use PHPUnit\Framework\TestCase;
 
-class MethodTest extends \PHPUnit_Framework_TestCase
+class MethodTest extends TestCase
 {
     public function testConstructor()
     {

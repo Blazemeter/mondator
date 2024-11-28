@@ -12,8 +12,9 @@
 namespace Mandango\Mondator\Tests\Definition;
 
 use Mandango\Mondator\Definition\Property;
+use PHPUnit\Framework\TestCase;
 
-class PropertyTest extends \PHPUnit_Framework_TestCase
+class PropertyTest extends TestCase
 {
     public function testConstructor()
     {
