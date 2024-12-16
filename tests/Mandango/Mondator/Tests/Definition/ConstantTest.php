@@ -3,8 +3,9 @@
 namespace Mandango\Mondator\Tests\Definition;
 
 use Mandango\Mondator\Definition\Constant;
+use PHPUnit\Framework\TestCase;
 
-class ConstantTest extends \PHPUnit_Framework_TestCase
+class ConstantTest extends TestCase
 {
     const IRRELEVANT_NAME = 'X';
     const IRRELEVANT_VALUE = 'X';

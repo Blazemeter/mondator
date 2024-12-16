@@ -15,8 +15,9 @@ use Mandango\Mondator\Definition\Constant;
 use Mandango\Mondator\Definition\Definition;
 use Mandango\Mondator\Definition\Method;
 use Mandango\Mondator\Definition\Property;
+use PHPUnit\Framework\TestCase;
 
-class DefinitionTest extends \PHPUnit_Framework_TestCase
+class DefinitionTest extends TestCase
 {
     public function testConstructor()
     {
@@ -115,20 +116,16 @@ class DefinitionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($definition->hasPropertyByName('property4'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetPropertyByNameNotExists()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $definition = new Definition('Class1');
         $definition->getPropertyByName('propertyName');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRemovePropertyByNameNotExists()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $definition = new Definition('Class1');
         $definition->removePropertyByName('propertyName');
     }
@@ -170,20 +167,16 @@ class DefinitionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($definition->hasMethodByName('method4'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetMethodByNameNotExists()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $definition = new Definition('Class1');
         $definition->getMethodByName('methodName');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRemoveMethodByNameNotExists()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $definition = new Definition('Class1');
         $definition->removeMethodByName('methodName');
     }
@@ -244,11 +237,9 @@ class DefinitionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($definition->getConstantByName('X'), $constant);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetConstantByNameShouldThrowException()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $definition = new Definition('Class1');
 
         $definition->getConstantByName('X');
@@ -265,11 +256,9 @@ class DefinitionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(sizeof($definition->getConstants()) === 0);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRemoveConstantBynameShouldThrowException()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $definition = new Definition('Class1');
 
         $definition->removeConstantByName('X');
