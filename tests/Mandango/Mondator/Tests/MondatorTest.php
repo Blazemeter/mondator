@@ -13,9 +13,8 @@ namespace Mandango\Mondator\Tests;
 
 use Mandango\Mondator\Extension;
 use Mandango\Mondator\Mondator;
-use PHPUnit\Framework\TestCase;
 
-class MondatorTest extends TestCase
+class MondatorTest extends \PHPUnit_Framework_TestCase
 {
     public function testConfigClasses()
     {
@@ -44,9 +43,11 @@ class MondatorTest extends TestCase
         $this->assertSame($classes, $mondator->getConfigClasses());
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testGetConfigClassNotExists()
     {
-        $this->expectException(\InvalidArgumentException::class);
         $mondator = new Mondator();
         $mondator->getConfigClass('Article');
     }
