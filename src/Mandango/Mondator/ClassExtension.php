@@ -13,8 +13,6 @@ namespace Mandango\Mondator;
 
 use Mandango\Mondator\Definition\Method;
 use Mandango\Mondator\Definition\Property;
-use Twig\Environment;
-use Twig\Loader\ArrayLoader;
 
 /**
  * ClassExtension is the base class for class extensions.
@@ -408,12 +406,12 @@ abstract class ClassExtension
     public function getTwig()
     {
         if (null === $this->twig) {
-            if (!class_exists('Twig\Environment')) {
+            if (!class_exists('Twig_Environment')) {
                 throw new \RuntimeException('Twig is required to use templates.');
             }
 
-            $loader = new ArrayLoader();
-            $twig = new Environment($loader, array(
+			$loader = new \Twig_Loader_Array();
+            $twig = new \Twig_Environment($loader, array(
                 'autoescape'       => false,
                 'strict_variables' => true,
                 'debug'            => true,
@@ -428,7 +426,7 @@ abstract class ClassExtension
         return $this->twig;
     }
 
-    protected function configureTwig(Environment $twig)
+    protected function configureTwig(\Twig_Environment $twig)
     {
     }
 

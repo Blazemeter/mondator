@@ -49,7 +49,8 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Set a definition.
      *
-     * @param string $name The definition name.
+     * @param string                       $name       The definition name.
+     * @param Mandango\Mondator\Definition $definition The definition.
      *
      * @api
      */
@@ -78,7 +79,7 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
      *
      * @param string $name The definition name.
      *
-     * @return Definition The definition.
+     * @return Mandango\Mondator\Definition The definition.
      *
      * @throws \InvalidArgumentException If the definition does not exists.
      *
@@ -96,7 +97,7 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Returns the definitions.
      *
-     * @return array The definitions.
+     * @return arary The definitions.
      *
      * @api
      */
@@ -136,24 +137,24 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
     /*
      * \ArrayAccess interface.
      */
-    public function offsetExists(mixed $offset): bool
+    public function offsetExists($name)
     {
-        return $this->hasDefinition($offset);
+        return $this->hasDefinition($name);
     }
 
-    public function offsetSet(mixed $offset, mixed $value): void
+    public function offsetSet($name, $definition)
     {
-        $this->setDefinition($offset, $value);
+        $this->setDefinition($name, $definition);
     }
 
-    public function offsetGet(mixed $offset): mixed
+    public function offsetGet($name)
     {
-        return $this->getDefinition($offset);
+        return $this->getDefinition($name);
     }
 
-    public function offsetUnset(mixed $offset): void
+    public function offsetUnset($name)
     {
-        $this->removeDefinition($offset);
+        $this->removeDefinition($name);
     }
 
     /**
@@ -163,7 +164,7 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
      *
      * @api
      */
-    public function count(): int
+    public function count()
     {
         return count($this->definitions);
     }
@@ -175,7 +176,7 @@ class Container implements \ArrayAccess, \Countable, \IteratorAggregate
      *
      * @api
      */
-    public function getIterator(): \Traversable
+    public function getIterator()
     {
         return new \ArrayIterator($this->definitions);
     }

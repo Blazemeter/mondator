@@ -14,9 +14,8 @@ namespace Mandango\Mondator\Tests;
 use Mandango\Mondator\Container;
 use Mandango\Mondator\Definition;
 use Mandango\Mondator\Output;
-use PHPUnit\Framework\TestCase;
 
-class ContainerTest extends TestCase
+class ContainerTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefinitions()
     {
@@ -71,16 +70,20 @@ class ContainerTest extends TestCase
         $this->assertSame(array(), $container->getDefinitions());
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testGetDefinitionNotExists()
     {
-        $this->expectException(\InvalidArgumentException::class);
         $container = new Container();
         $container->getDefinition('definition');
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testRemoveDefinitionNotExists()
     {
-        $this->expectException(\InvalidArgumentException::class);
         $container = new Container();
         $container->removeDefinition('definition');
     }
